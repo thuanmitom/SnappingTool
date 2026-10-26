@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SnappingTool Tab Bridge",
+  "version": "0.2.0",
+  "description": "Lets SnappingTool capture and restore your open tabs. Tab URLs are encrypted and sent only to the paired SnappingTool app on your own computer (127.0.0.1).",
+  "permissions": ["tabs", "alarms", "storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "SnappingTool Tab Bridge — click to pair"
+  },
+  "icons": {
+    "128": "icon128.png"
+  }
+}

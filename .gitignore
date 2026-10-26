@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# download/ receives the build (installers ~106 MB each, over GitHub's 100 MB
+# file limit, plus extension/ and SHA256SUMS.txt). Only its README is tracked.
+download/*
+!download/README.md
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local env
+.env
+
+# Code-signing certificates
+*.pfx
+*.p12

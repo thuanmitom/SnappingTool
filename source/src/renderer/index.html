@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';" />
+  <title>SnappingTool</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Custom titlebar (frameless window) -->
+  <header class="titlebar">
+    <div class="titlebar__brand">
+      <span class="logo-mark" aria-hidden="true">✦</span>
+      <span class="titlebar__name">SnappingTool</span>
+      <span class="titlebar__hint" id="bridge-pill" title="Browser tab bridge status">tabs: —</span>
+    </div>
+    <div class="titlebar__controls">
+      <button class="tbtn" id="btn-min" aria-label="Minimize">&#8211;</button>
+      <button class="tbtn tbtn--close" id="btn-close" aria-label="Close to tray">&#10005;</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <button class="nav-item is-active" data-view="home">
+        <span class="nav-ico">📸</span><span>Sessions</span>
+      </button>
+      <button class="nav-item" data-view="catalogs">
+        <span class="nav-ico">🗂️</span><span>Catalogs</span>
+      </button>
+      <button class="nav-item" data-view="quick">
+        <span class="nav-ico">⚡</span><span>Quick actions</span>
+      </button>
+      <button class="nav-item" data-view="settings">
+        <span class="nav-ico">⚙️</span><span>Settings</span>
+      </button>
+
+      <div class="sidebar__spacer"></div>
+
+      <div class="res-widget" id="res-widget" title="System resources">
+        <div class="res-row"><span>RAM free</span><b id="res-ram">—</b></div>
+        <div class="res-bar"><i id="res-ram-bar"></i></div>
+        <div class="res-row"><span>Profile</span><b id="res-profile">—</b></div>
+      </div>
+
+      <button class="snap-btn" id="btn-snap">
+        <span class="snap-btn__glow"></span>
+        <span class="snap-btn__label">Snap now!</span>
+      </button>
+    </nav>
+
+    <!-- Main -->
+    <main class="content" id="content"><!-- views injected here --></main>
+  </div>
+
+  <!-- Snap selection modal -->
+  <div class="modal-backdrop" id="snap-modal" hidden>
+    <div class="modal">
+      <div class="modal__head">
+        <h2>📸 What should we snap?</h2>
+        <p class="muted" id="snap-modal-sub">Pick the apps and tabs to keep in this session.</p>
+      </div>
+      <div class="modal__body" id="snap-list"><!-- items --></div>
+      <div class="modal__foot modal__foot--stack">
+        <input class="input" id="snap-name" placeholder="Give it a fun name (optional)" />
+        <div id="snap-catalog-row" class="snap-catalog-row"><!-- catalog chips --></div>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" id="snap-cancel">Cancel</button>
+          <button class="btn btn--primary" id="snap-save">Save session ✨</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast + restore overlay -->
+  <div class="toast" id="toast" hidden></div>
+  <div class="restore-overlay" id="restore-overlay" hidden>
+    <div class="restore-card">
+      <div class="bouncer"><span>✦</span></div>
+      <div class="restore-title" id="restore-title">Bringing it all back…</div>
+      <div class="restore-sub" id="restore-sub"></div>
+      <div class="progress"><i id="restore-bar"></i></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
